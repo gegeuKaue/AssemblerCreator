@@ -9,7 +9,7 @@ import org.apache.commons.io.FileUtils;
 
 public class Main {
 	public static void main(String[] args) throws IOException {
-		List<String> lines = FileUtils.readLines(new File("C:\\Users\\geovane.santos\\Desktop\\enum.java"));
+		List<String> lines = FileUtils.readLines(new File("C:\\Users\\lucas.silva\\Desktop\\arquivo.java"));
 		String classe = nomeClasse(lines);
 		List<Atributo> atributosClasse = atributos(lines);
 
@@ -25,23 +25,6 @@ public class Main {
 
 		ResourceAssembler assembler = new ResourceAssembler(classe);
 		System.out.println(assembler.classeAssemblerAll(atributosClasse, atributos));
-//		Formatacao formatacao;
-//		System.out.println("toResource");
-//		System.out.println("___________________________________________________________");
-//		System.out.println("\n");
-//
-//		for (Atributo atributo : atributos) {
-//			formatacao = new Formatacao(atributo);
-//			System.out.println(formatacao.toResource());
-//		}
-//		System.out.println("\n");
-//		System.out.println("toEntity");
-//		System.out.println("___________________________________________________________");
-//		System.out.println("\n");
-//		for (Atributo atributo : atributos) {
-//			formatacao = new Formatacao(atributo);
-//			System.out.println(formatacao.toEntity());
-//		}
 
 	}
 
@@ -133,6 +116,9 @@ public class Main {
 		List<String> newLines = new ArrayList<String>();
 		for (int i = 0; i < lines.size(); i++) {
 			if (lines.get(i).contains("import")) {
+				continue;
+			}
+			if (lines.get(i).contains("@")) {
 				continue;
 			}
 			if (lines.get(i).contains("{")) {
