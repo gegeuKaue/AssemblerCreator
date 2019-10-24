@@ -16,9 +16,11 @@ public class Main {
 		lines = limpar(lines);
 		lines = limpaCaracterePontoVirgula(lines);
 		List<Atributo> atributos = new ArrayList<Atributo>();
-		for (String linha : lines) {
-			String[] linhaQuebrada = linha.split("\\s");
-			atributos.add(new Atributo(linhaQuebrada[1], linhaQuebrada[2]));
+		if (!atributos.isEmpty()) {
+			for (String linha : lines) {
+				String[] linhaQuebrada = linha.split("\\s");
+				atributos.add(new Atributo(linhaQuebrada[1], linhaQuebrada[2]));
+			}
 		}
 		ResourceAssembler assembler = new ResourceAssembler(classe);
 		System.out.println(assembler.classeAssemblerAll(atributosClasse, atributos));
