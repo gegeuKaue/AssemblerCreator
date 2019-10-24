@@ -40,6 +40,8 @@ public class ResourceAssembler {
 		builder.append('\n');
 		builder.append(condicaoEntity());
 		builder.append('\n');
+		builder.append(newValorEntity());
+		builder.append('\n');
 		builder.append(copyPropertiesEntity());
 		if (classes != null && !classes.isEmpty()) {
 			for (Atributo atributo : classes) {
@@ -82,6 +84,9 @@ public class ResourceAssembler {
 		builder.append(declaracaoResource(nomeClasse));
 		builder.append('\n');
 		builder.append(condicaoResource());
+
+		builder.append('\n');
+		builder.append(newValorResource());
 		builder.append('\n');
 		builder.append(copyPropertiesResource());
 		if (classes != null && !classes.isEmpty()) {
@@ -202,6 +207,14 @@ public class ResourceAssembler {
 				+ classe + "()));";
 	}
 
+	private String newValorEntity() {
+		return "entity = new " + nomeClasse + "();";
+	}
+
+	private String newValorResource() {
+		return "resource = new " + nomeClasse + "Resource();";
+	}
+
 	private String fecharChaves() {
 		return "}";
 	}
@@ -216,10 +229,6 @@ public class ResourceAssembler {
 
 	private String listSMetodoResources(String classe) {
 		return " public List<" + classe + "Resource> toResources(List<" + classe + "> entities) {";
-	}
-
-	private String listSMetodo(String from, String to, String classes) {
-		return "public List<" + classes + "> to" + to + "(List<" + classes + "Resource> " + from + ") {";
 	}
 
 	public String resourcesResources() {

@@ -9,7 +9,7 @@ import org.apache.commons.io.FileUtils;
 
 public class Main {
 	public static void main(String[] args) throws IOException {
-		List<String> lines = FileUtils.readLines(new File("C:\\Users\\lucas.silva\\Desktop\\arquivo.java"));
+		List<String> lines = FileUtils.readLines(new File("C:\\Users\\geovane.santos\\Desktop\\enum.java"));
 		String classe = nomeClasse(lines);
 		List<Atributo> atributosClasse = atributos(lines);
 
